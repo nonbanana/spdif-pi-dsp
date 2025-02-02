@@ -1,3 +1,4 @@
+
 ## reference
 - https://github.com/elehobica/pico_spdif_rx
 
@@ -22,3 +23,9 @@
 |1|Vout|20|GPIO 15|
 |2|GND|18|GND|
 |3|Vcc|36|3V3(OUT)|
+
+
+
+https://github.com/mdsimon2/RPi-CamillaDSP 참조
+wget https://github.com/HEnquist/camilladsp/releases/download/v3.0.0/camilladsp-linux-aarch64.tar.gz
+

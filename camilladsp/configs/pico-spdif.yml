@@ -1,0 +1,100 @@
+description: null
+devices:
+  adjust_period: 5
+  capture:
+    channels: 2
+    device: hw:1
+    format: S32LE
+    labels: null
+    link_mute_control: null
+    link_volume_control: null
+    stop_on_inactive: null
+    type: Alsa
+  capture_samplerate: 48000
+  chunksize: 128
+  enable_rate_adjust: true
+  multithreaded: null
+  playback:
+    channels: 2
+    device: hw:CARD=Headset,DEV=0
+    format: null
+    type: Alsa
+  queuelimit: 4
+  rate_measure_interval: 1
+  resampler:
+    profile: Balanced
+    type: AsyncSinc
+  samplerate: 48000
+  silence_threshold: -100
+  silence_timeout: 5
+  stop_on_rate_change: false
+  target_level: 128
+  volume_limit: null
+  volume_ramp_time: null
+  worker_threads: null
+filters:
+  mr4-room-1:
+    description: null
+    parameters:
+      freq: 149
+      gain: -17
+      q: 31
+      type: Peaking
+    type: Biquad
+  mr4-room-2:
+    description: null
+    parameters:
+      freq: 184
+      gain: -4
+      q: 14.81
+      type: Peaking
+    type: Biquad
+  pregain:
+    description: null
+    parameters:
+      gain: -2
+      inverted: false
+      mute: false
+      scale: dB
+    type: Gain
+mixers:
+  2x2:
+    channels:
+      in: 2
+      out: 2
+    description: null
+    labels: null
+    mapping:
+    - dest: 0
+      mute: false
+      sources:
+      - channel: 0
+        gain: 0
+        inverted: false
+        mute: false
+        scale: dB
+    - dest: 1
+      mute: false
+      sources:
+      - channel: 1
+        gain: 0
+        inverted: false
+        mute: false
+        scale: dB
+pipeline:
+- bypassed: false
+  channels:
+  - 0
+  - 1
+  description: null
+  names:
+  - pregain
+  - mr4-room-1
+  - mr4-room-2
+  type: Filter
+- bypassed: true
+  description: null
+  name: 2x2
+  type: Mixer
+processors: {}
+title: Streamer
